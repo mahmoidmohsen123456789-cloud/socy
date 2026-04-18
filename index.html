@@ -1,0 +1,76 @@
+import { Link } from "@tanstack/react-router";
+import { Phone, MapPin, Clock, Instagram, Facebook } from "lucide-react";
+import { useSushi } from "@/store/sushi-store";
+
+export function Footer() {
+  const { t } = useSushi();
+  return (
+    <footer className="relative border-t border-border bg-card/30">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4 md:px-10">
+        <div>
+          <div className="mb-3 flex items-center gap-2">
+            <span className="text-2xl">🍣</span>
+            <span className="font-display text-lg font-bold tracking-widest">
+              SUSHI <span className="text-gradient-primary">CIRCLE</span>
+            </span>
+          </div>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {t(
+              "Crafted Japanese flavors with a Cairo soul. Fresh, bold, unforgettable.",
+              "نكهات يابانية أصيلة بروح القاهرة. طازجة، جريئة، لا تُنسى.",
+            )}
+          </p>
+        </div>
+
+        <div>
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+            {t("Visit", "زورنا")}
+          </h4>
+          <ul className="space-y-2 text-sm">
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{t("Madinaty Central Park, New Cairo", "سنترال بارك مدينتي، القاهرة الجديدة")}</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-primary" />
+              <a href="tel:01007726633" className="hover:text-primary">01007726633</a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Clock className="h-4 w-4 text-primary" />
+              <span>{t("Daily 12 PM – 12 AM", "يوميًا ١٢ ظهراً – ١٢ منتصف الليل")}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+            {t("Explore", "استكشف")}
+          </h4>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/menu" className="text-muted-foreground hover:text-foreground">{t("Menu", "القائمة")}</Link></li>
+            <li><Link to="/order" className="text-muted-foreground hover:text-foreground">{t("Order Online", "اطلب أونلاين")}</Link></li>
+            <li><Link to="/about" className="text-muted-foreground hover:text-foreground">{t("Our Story", "قصتنا")}</Link></li>
+            <li><Link to="/tracking" className="text-muted-foreground hover:text-foreground">{t("Track Order", "تتبع الطلب")}</Link></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+            {t("Follow", "تابعنا")}
+          </h4>
+          <div className="flex gap-3">
+            <a href="#" className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:text-primary"><Instagram className="h-4 w-4" /></a>
+            <a href="#" className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:text-primary"><Facebook className="h-4 w-4" /></a>
+            <a href="https://wa.me/201007726633" className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition hover:border-primary hover:text-primary">💬</a>
+          </div>
+          <p className="mt-4 text-xs text-muted-foreground">
+            #SushiCircle · #المدينة · #سوشي
+          </p>
+        </div>
+      </div>
+      <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Sushi Circle · {t("Crafted with 🥢 in Cairo", "صُنع بـ 🥢 في القاهرة")}
+      </div>
+    </footer>
+  );
+}
